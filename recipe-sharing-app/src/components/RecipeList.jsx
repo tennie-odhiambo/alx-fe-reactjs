@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import useRecipeStore from './recipeStore';
+import DeleteRecipeButton from './DeleteRecipeButton';
 
 const RecipeList = () => {
   const recipes = useRecipeStore((state) => state.recipes);
@@ -13,6 +14,7 @@ const RecipeList = () => {
           <h3>{recipe.title}</h3>
           <p>{recipe.description}</p>
           <Link to={`/recipe/${recipe.id}`} style={{ textDecoration: 'none', color: 'blue' }}>View Details</Link>
+          <DeleteRecipeButton recipeId={recipe.id} />
         </div>
       ))}
     </div>
