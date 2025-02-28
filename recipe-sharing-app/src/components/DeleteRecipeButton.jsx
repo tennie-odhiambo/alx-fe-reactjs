@@ -5,13 +5,13 @@ const DeleteRecipeButton = ({ recipeId }) => {
   const deleteRecipe = useRecipeStore((state) => state.deleteRecipe);
   const navigate = useNavigate();
 
-  const handeleDelete = () => {
+  const handleDelete = () => {
     deleteRecipe(recipeId);
     navigate('/');
   }
 
   return (
-    <button onClick={handeleDelete} style={{ background: 'red', color: 'white', marginLeft: '10px' }}>
+    <button onClick={handleDelete} style={{ background: 'red', color: 'white', marginLeft: '10px' }}>
       Delete
     </button>
   );
