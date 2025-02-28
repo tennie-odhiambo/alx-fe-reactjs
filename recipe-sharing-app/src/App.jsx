@@ -9,12 +9,10 @@ function App() {
     <Router>
     <div>
       <h1>Recipe Sharing App</h1>
+      <AddRecipeForm />
       <Routes>
       <Route path = "/" element = {
-        <div>
-          <AddRecipeForm />
           <RecipeList />
-        </div>
       } />
       <Route path="/recipe/:id" element={<RecipeDetails />} />
       </Routes>

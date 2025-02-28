@@ -4,8 +4,6 @@ import EditRecipeForm from "./EditRecipeForm";
 import DeleteRecipeButton from "./DeleteRecipeButton";
 
 
-
-
 const RecipeDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
