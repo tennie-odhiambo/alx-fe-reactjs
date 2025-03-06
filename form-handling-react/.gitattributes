@@ -1,0 +1,13 @@
+# Convert text files to LF (Unix) on commit and keep the correct endings on checkout
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+
+# Keep binary files unchanged
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
