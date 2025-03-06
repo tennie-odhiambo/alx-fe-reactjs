@@ -1,69 +1,76 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
-function RegistrationForm() {
-    const [formData, setFormData] = useState({
-        username: "",
-        email: "",
-        password: "",
-        });
+const RegistrationForm = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     
+    const trimmedUsername = formData.username.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedPassword = formData.password.trim();
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-
-        e.preventDefault();
-        if (!formData.username && !formData.email && !formData.password) {
-            alert(`To continue, please enter all required details!`);
-        }
-
-        console.log('Form Submitted', formData);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!formData.username && !formData.email && !formData.password) {
-            alert(`To continue, please enter all required details!`);
-        } else {
-            console.log('Form Submitted', formData);
-        }
+    if (!trimmedUsername || !trimmedEmail || !trimmedPassword) {
+      alert('All fields are required!');
+      return;
     }
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username:
-                <input
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                Email:
-                <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                Password:
-                <input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
-    );
-}
+    if (!isValidEmail(trimmedEmail)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    console.log('Form submitted:', { username: trimmedUsername, email: trimmedEmail, password: trimmedPassword });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="username">Username</label>
+      <input
+        id="username"
+        type="text"
+        name="username"
+        placeholder="Username"
+        value={formData.username}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={formData.password}
+        onChange={handleChange}
+      />
+
+      <button type="submit" disabled={!formData.username || !formData.email || !formData.password}>
+        Register
+      </button>
+    </form>
+  );
+};
 
 export default RegistrationForm;
