@@ -29,4 +29,4 @@ const validationSchema = Yup.object({
     );
   };
   
-  export default FormikForm;
+  export default formikForm;
