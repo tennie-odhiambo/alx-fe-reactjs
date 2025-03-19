@@ -25,7 +25,7 @@ const HomePage = () => {
               <h2 className="text-xl font-semibold">{recipe.title}</h2>
               <p className="text-gray-600">{recipe.summary}</p>
               <a href={`/recipe/${recipe.id}`} className="text-blue-500 hover:underline mt-2 inline-block">
-                View Recipe
+                view recipe →
               </a>
             </div>
           </div>
