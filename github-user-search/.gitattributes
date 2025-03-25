@@ -1,0 +1,21 @@
+# Normalize line endings to LF (important for cross-platform consistency)
+* text=auto eol=lf
+
+# Treat JavaScript, JSX, and JSON files as text
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+
+# Ensure that images and binary files are not modified
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+
+# Keep Tailwind config and PostCSS config as LF
+tailwind.config.js text eol=lf
+postcss.config.js text eol=lf
+
+# Prevent CRLF issues in Windows
+*.sh text eol=lf
+
